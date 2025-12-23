@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stringhopper Hut | Catering | Kesbewa</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%);
+            color: #2d2d2d;
+        }
+
+        header {
+            background: linear-gradient(135deg, #c62828 0%, #ff6f00 50%, #ff5722 100%);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.1;
+            }
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header .subtitle-extra {
+            font-size: 1.1rem;
+            margin-top: 15px;
+            font-weight: 400;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-lang {
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-lang button {
+            margin: 5px;
+            padding: 12px 28px;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.9);
+            color: #c62828;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-lang button:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: #c62828;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 1px;
+        }
+
+        .card {
+            border-radius: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+        }
+
+        .card .fs-4 {
+            font-size: 2rem !important;
+            font-weight: 800;
+        }
+
+        .alert {
+            border-radius: 20px;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: #fff;
+            padding: 18px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+            color: #fff;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+            font-size: 1.1rem;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 1.1rem;
+            border: 2px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #ff5722;
+            box-shadow: 0 0 0 0.2rem rgba(255, 87, 34, 0.25);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            border: none;
+            padding: 18px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="animate__animated animate__fadeInDown">
+        <h1 id="title">🍽️ Stringhopper Hut</h1>
+        <p id="subtitle">අද රස කේටරින්</p>
+        <p class="subtitle-extra" id="extraInfo">
+            🔴⚪ White and Red String Hoppers Available<br>
+            ✅ Orders confirmed after deposit payment
+        </p>
+        <div class="nav-lang">
+            <button onclick="setLang('si')">සිංහල</button>
+            <button onclick="setLang('en')">English</button>
+        </div>
+        <p><a class="text-white fw-bold" href="https://wa.me/94778889324" style="font-size: 1.3rem; text-decoration: none;" id="orderNowLink">📲 WhatsApp Order Now</a></p>
+    </header>
+
+    <!-- Notice -->
+    <section class="container my-5">
+        <div class="alert alert-warning text-center animate__animated animate__fadeInUp" role="alert" id="delivery">
+            🚚 Orders above 200 String Hoppers – FREE DELIVERY <br>
+            📍 Within 5km radius – Kesbewa
+        </div>
+        <div class="alert alert-info text-center animate__animated animate__fadeInUp" role="alert" id="advance">
+            ⚠️ 50% Advance Payment is mandatory to confirm all catering orders.
+        </div>
+    </section>
+
+    <!-- Elegant Packages Section -->
+    <section class="container my-5">
+        <h2 class="section-title text-center animate__animated animate__fadeIn" id="packagesTitle">🍽️ String Hopper Catering Packages</h2>
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 100%);">
+                    <h3>🥢 100 String Hoppers</h3>
+                    <p>Perfect for small events</p>
+                    <p class="text-success fw-bold fs-4">Rs 500</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);">
+                    <h3>🍴 200 String Hoppers</h3>
+                    <p>Medium gatherings</p>
+                    <p class="text-success fw-bold fs-4">Rs 1,000</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);">
+                    <h3>🎉 250 String Hoppers</h3>
+                    <p>Special occasions</p>
+                    <p class="text-success fw-bold fs-4">Rs 1,250</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);">
+                    <h3>🎊 300 String Hoppers</h3>
+                    <p>Large parties</p>
+                    <p class="text-success fw-bold fs-4">Rs 1,500</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);">
+                    <h3>🎈 400 String Hoppers</h3>
+                    <p>Events & celebrations</p>
+                    <p class="text-success fw-bold fs-4">Rs 2,000</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);">
+                    <h3>🎪 500 String Hoppers</h3>
+                    <p>Big catering orders</p>
+                    <p class="text-success fw-bold fs-4">Rs 2,500</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extras Section -->
+    <section class="container my-5">
+        <h2 class="section-title text-center animate__animated animate__fadeIn" id="extrasTitle">🍛 Extras & Curries</h2>
+        <div class="alert alert-info text-center animate__animated animate__fadeInUp" role="alert" id="extrasInfo">
+            Available in various sizes: 500ml, 650ml, 750ml, 1L<br>
+            📞 Contact us for pricing on your preferred size
+        </div>
+        <div class="row g-4 text-center">
+            <div class="col-md-3">
+                <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);">
+                    <h3 id="chickenGravy">🍗 Chicken Gravy</h3>
+                    <p class="text-muted" id="multipleSizes1">Multiple sizes available</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);">
+                    <h3 id="polSambol">🥥 Pol Sambol</h3>
+                    <p class="text-muted" id="multipleSizes2">Multiple sizes available</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);">
+                    <h3 id="potatoCurry">🥔 Potato Curry</h3>
+                    <p class="text-muted" id="multipleSizes3">Multiple sizes available</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);">
+                    <h3 id="dhalCurry">🍛 Dhal Curry</h3>
+                    <p class="text-muted" id="multipleSizes4">Multiple sizes available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section class="container my-5">
+        <h2 class="section-title text-center animate__animated animate__fadeIn" id="orderFormTitle">Online Order</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <form onsubmit="sendWA(); return false;" class="animate__animated animate__fadeInUp">
+                    <div class="mb-4"><input id="name" class="form-control" placeholder="Name / නම" required></div>
+                    <div class="mb-4"><input id="phone" class="form-control" placeholder="Phone" required></div>
+                    <div class="mb-4">
+                        <label for="pkg" class="form-label fw-bold fs-5">Select Package</label>
+                        <select id="pkg" class="form-select">
+                            <option value="100">100 String Hoppers - Rs 500</option>
+                            <option value="200">200 String Hoppers - Rs 1,000</option>
+                            <option value="250">250 String Hoppers - Rs 1,250</option>
+                            <option value="300">300 String Hoppers - Rs 1,500</option>
+                            <option value="400">400 String Hoppers - Rs 2,000</option>
+                            <option value="500">500 String Hoppers - Rs 2,500</option>
+                        </select>
+                    </div>
+                    <div class="mb-4"><textarea id="msg" class="form-control" rows="4" placeholder="Event date / Location / Extras needed (Chicken Gravy, Pol Sambol, etc.) / White or Red String Hoppers / Notes"></textarea></div>
+
+                    <p class="text-danger text-center fw-bold fs-5">⚠️ 50% advance payment required</p>
+
+                    <button type="submit" class="btn btn-success w-100">Send Order via WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social & QR -->
+    <section class="container text-center my-5 animate__animated animate__fadeInUp">
+        <a href="https://facebook.com/yourpage" class="me-4 fs-4 text-decoration-none">📘 Facebook</a>
+        <a href="https://instagram.com/yourpage" class="ms-4 fs-4 text-decoration-none">📸 Instagram</a>
+        <br><br>
+        <img class="rounded shadow" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://wa.me/94778889324" alt="WhatsApp QR Code">
+        <p class="mt-3 fs-5 fw-bold" id="scanText">Scan to order on WhatsApp</p>
+    </section>
+
+    <footer>
+        <p class="mb-0">© 2025 Stringhopper Hut – Kesbewa | අද රස කේටරින්</p>
+    </footer>
+
+    <a class="whatsapp" href="https://wa.me/94778889324">💬 Order</a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // WhatsApp order
+        function sendWA() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const pkg = document.getElementById('pkg').value;
+            const pkgText = document.getElementById('pkg').options[document.getElementById('pkg').selectedIndex].text;
+            const msg = document.getElementById('msg').value;
+            const text = `Name: ${name}%0APhone: ${phone}%0APackage: ${pkgText}%0ADetails: ${msg}%0AAdvance: 50% required`;
+            window.open("https://wa.me/94778889324?text=" + text, "_blank");
+        }
+
+        // Language toggle
+        function setLang(l) {
+            if (l === "si") {
+                document.getElementById("title").innerHTML = "🍽️ ඉඳිආප්ප හට්";
+                document.getElementById("subtitle").innerHTML = "Home-Based Catering | Kesbewa";
+                document.getElementById("extraInfo").innerHTML = "🔴⚪ සුදු සහ රතු ඉඳිආප්ප තිබේ<br>✅ තැන්පතු ගෙවීමෙන් පසුව ඇනවුම් තහවුරු වේ";
+                document.getElementById("delivery").innerHTML = "🚚 ඉඳිආප්ප 200ට වැඩි ඇනවුම් සඳහා නොමිලේ බෙදාහැරීම<br>📍 කැස්බෑව – 5km සීමාව තුළ";
+                document.getElementById("advance").innerHTML = "⚠️ සියලු කේටරින් ඇනවුම් තහවුරු කිරීම සඳහා 50% ක අත්තිකාරම් මුදල් අනිවාර්ය වේ.";
+                document.getElementById("packagesTitle").innerHTML = "ඉඳිආප්ප පැකේජ්";
+                document.getElementById("extrasTitle").innerHTML = "🍛 අතිරේක කරි";
+                document.getElementById("extrasInfo").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක: 500ml, 650ml, 750ml, 1L<br>📞 ඔබගේ අවශ්‍ය ප්‍රමාණය සඳහා මිල ගණන් දැන ගැනීමට අප හා සම්බන්ධ වන්න";
+                document.getElementById("chickenGravy").innerHTML = "🍗 කුකුල් මස් කරිය";
+                document.getElementById("polSambol").innerHTML = "🥥 පොල් සම්බෝලය";
+                document.getElementById("potatoCurry").innerHTML = "🥔 අල කරිය";
+                document.getElementById("dhalCurry").innerHTML = "🍛 පරිප්පු කරිය";
+                document.getElementById("multipleSizes1").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
+                document.getElementById("multipleSizes2").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
+                document.getElementById("multipleSizes3").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
+                document.getElementById("multipleSizes4").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
+                document.getElementById("orderNowLink").innerHTML = "📲 WhatsApp දැන්ම ඇණවුම් කරන්න";
+                document.getElementById("orderFormTitle").innerHTML = "ඔන්ලයින් ඇණවුම්";
+                document.getElementById("scanText").innerHTML = "WhatsApp මඟින් ඇණවුම් කිරීමට ස්කෑන් කරන්න";
+            } else {
+                location.reload();
+            }
+        }
+    </script>
+
+</body>
+
+</html>
