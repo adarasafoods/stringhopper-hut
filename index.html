@@ -247,7 +247,7 @@
     <!-- Header -->
     <header class="animate__animated animate__fadeInDown">
         <h1 id="title">🍽️ Stringhopper Hut</h1>
-        <p id="subtitle"> ඉදි ආප්ප කඩේ </p>
+        <p id="subtitle">අද රස කේටරින්</p>
         <p class="subtitle-extra" id="extraInfo">
             🔴⚪ White and Red String Hoppers Available<br>
             ✅ Orders confirmed after deposit payment
@@ -256,14 +256,14 @@
             <button onclick="setLang('si')">සිංහල</button>
             <button onclick="setLang('en')">English</button>
         </div>
-        <p><a class="text-white fw-bold" href="https://wa.me/94778889324" style="font-size: 1.3rem; text-decoration: none;">📲 WhatsApp Order Now</a></p>
+        <p><a class="text-white fw-bold" href="https://wa.me/94778889324" style="font-size: 1.3rem; text-decoration: none;" id="orderNowLink">📲 WhatsApp Order Now</a></p>
     </header>
 
     <!-- Notice -->
     <section class="container my-5">
         <div class="alert alert-warning text-center animate__animated animate__fadeInUp" role="alert" id="delivery">
-            🚚 Orders above 200 String Hoppers — FREE DELIVERY <br>
-            📍 Within 5km radius — Kesbewa
+            🚚 Orders above 200 String Hoppers – FREE DELIVERY <br>
+            📍 Within 5km radius – Kesbewa
         </div>
         <div class="alert alert-info text-center animate__animated animate__fadeInUp" role="alert" id="advance">
             ⚠️ 50% Advance Payment is mandatory to confirm all catering orders.
@@ -321,34 +321,34 @@
 
     <!-- Extras Section -->
     <section class="container my-5">
-        <h2 class="section-title text-center animate__animated animate__fadeIn">🍛 Extras & Curries</h2>
-        <div class="alert alert-info text-center animate__animated animate__fadeInUp" role="alert">
+        <h2 class="section-title text-center animate__animated animate__fadeIn" id="extrasTitle">🍛 Extras & Curries</h2>
+        <div class="alert alert-info text-center animate__animated animate__fadeInUp" role="alert" id="extrasInfo">
             Available in various sizes: 500ml, 650ml, 750ml, 1L<br>
             📞 Contact us for pricing on your preferred size
         </div>
         <div class="row g-4 text-center">
             <div class="col-md-3">
                 <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);">
-                    <h3>🍗 Chicken Gravy</h3>
-                    <p class="text-muted">Multiple sizes available</p>
+                    <h3 id="chickenGravy">🍗 Chicken Gravy</h3>
+                    <p class="text-muted" id="multipleSizes1">Multiple sizes available</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);">
-                    <h3>🥥 Pol Sambol</h3>
-                    <p class="text-muted">Multiple sizes available</p>
+                    <h3 id="polSambol">🥥 Pol Sambol</h3>
+                    <p class="text-muted" id="multipleSizes2">Multiple sizes available</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);">
-                    <h3>🥔 Potato Curry</h3>
-                    <p class="text-muted">Multiple sizes available</p>
+                    <h3 id="potatoCurry">🥔 Potato Curry</h3>
+                    <p class="text-muted" id="multipleSizes3">Multiple sizes available</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card p-4 shadow-sm animate__animated animate__fadeInUp" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);">
-                    <h3>🍛 Dhal Curry</h3>
-                    <p class="text-muted">Multiple sizes available</p>
+                    <h3 id="dhalCurry">🍛 Dhal Curry</h3>
+                    <p class="text-muted" id="multipleSizes4">Multiple sizes available</p>
                 </div>
             </div>
         </div>
@@ -356,7 +356,7 @@
 
     <!-- Order Form -->
     <section class="container my-5">
-        <h2 class="section-title text-center animate__animated animate__fadeIn">Online Order</h2>
+        <h2 class="section-title text-center animate__animated animate__fadeIn" id="orderFormTitle">Online Order</h2>
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <form onsubmit="sendWA(); return false;" class="animate__animated animate__fadeInUp">
@@ -389,11 +389,11 @@
         <a href="https://instagram.com/yourpage" class="ms-4 fs-4 text-decoration-none">📸 Instagram</a>
         <br><br>
         <img class="rounded shadow" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://wa.me/94778889324" alt="WhatsApp QR Code">
-        <p class="mt-3 fs-5 fw-bold">Scan to order on WhatsApp</p>
+        <p class="mt-3 fs-5 fw-bold" id="scanText">Scan to order on WhatsApp</p>
     </section>
 
     <footer>
-        <p class="mb-0">© 2025 Stringhopper Hut — Kesbewa | අද රස කේටරින්</p>
+        <p class="mb-0">© 2025 Stringhopper Hut – Kesbewa | අද රස කේටරින්</p>
     </footer>
 
     <a class="whatsapp" href="https://wa.me/94778889324">💬 Order</a>
@@ -416,12 +416,25 @@
         // Language toggle
         function setLang(l) {
             if (l === "si") {
-                document.getElementById("title").innerHTML = "🍽️ ඉදිආප්ප හට්";
+                document.getElementById("title").innerHTML = "🍽️ ඉඳිආප්ප හට්";
                 document.getElementById("subtitle").innerHTML = "Home-Based Catering | Kesbewa";
-                document.getElementById("extraInfo").innerHTML = "🔴⚪ සුදු සහ රතු ඉදිආප්ප තිබේ<br>✅ තැන්පතු ගෙවීමෙන් පසුව ඇණවුම් තහවුරු වේ";
-                document.getElementById("delivery").innerHTML = "🚚 ඉදිආප්ප 200ට වැඩි ඇණවුම් සඳහා නොමිලේ බෙදාහැරීම<br>📍 කැස්බෑව — 5km සීමාව තුළ";
-                document.getElementById("advance").innerHTML = "⚠️ සියලු කේටරීන් ඇණවුම් තහවුරු කිරීම සඳහා 50% ක අත්තිකාරම් මුදල් අනිවාර්ය වේ.";
-                document.getElementById("packagesTitle").innerHTML = "ඉදිආප්ප පැකේජ්";
+                document.getElementById("extraInfo").innerHTML = "🔴⚪ සුදු සහ රතු ඉඳිආප්ප තිබේ<br>✅ තැන්පතු ගෙවීමෙන් පසුව ඇනවුම් තහවුරු වේ";
+                document.getElementById("delivery").innerHTML = "🚚 ඉඳිආප්ප 200ට වැඩි ඇනවුම් සඳහා නොමිලේ බෙදාහැරීම<br>📍 කැස්බෑව  – 5km සීමාව තුළ";
+                document.getElementById("advance").innerHTML = "⚠️ සියලු කේටරින් ඇනවුම් තහවුරු කිරීම සඳහා 50% ක අත්තිකාරම් මුදල් අනිවාර්ය වේ.";
+                document.getElementById("packagesTitle").innerHTML = "ඉඳිආප්ප පැකේජ්";
+                document.getElementById("extrasTitle").innerHTML = "🍛 අතිරේක හා කරි වර්ග";
+                document.getElementById("extrasInfo").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක: 500ml, 650ml, 750ml, 1L<br>📞 ඔබගේ අවශ්‍ය ප්‍රමාණය සඳහා මිල ගණන් දැන ගැනීමට අප හා සම්බන්ධ වන්න";
+                document.getElementById("chickenGravy").innerHTML = "🍗 කුකුල් මස් කරිය";
+                document.getElementById("polSambol").innerHTML = "🥥 පොල් සම්බෝලය";
+                document.getElementById("potatoCurry").innerHTML = "🥔 අල කරිය";
+                document.getElementById("dhalCurry").innerHTML = "🍛 පරිප්පු කරිය";
+                document.getElementById("multipleSizes1").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
+                document.getElementById("multipleSizes2").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
+                document.getElementById("multipleSizes3").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
+                document.getElementById("multipleSizes4").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
+                document.getElementById("orderNowLink").innerHTML = "📲 WhatsApp දැන්ම ඇණවුම් කරන්න";
+                document.getElementById("orderFormTitle").innerHTML = "ඔන්ලයින් ඇණවුම්";
+                document.getElementById("scanText").innerHTML = "WhatsApp මඟින් ඇණවුම් කිරීමට ස්කෑන් කරන්න";
             } else {
                 location.reload();
             }
