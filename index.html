@@ -15,6 +15,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         * {
             font-family: 'Poppins', sans-serif;
@@ -47,13 +50,10 @@
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
                 opacity: 0.3;
             }
-
             50% {
                 transform: scale(1.2);
                 opacity: 0.1;
@@ -251,6 +251,35 @@
                 font-size: 2.2rem;
             }
         }
+
+        /* Sticky Social Bar */
+        .social-bar {
+            position: fixed;
+            top: 40%;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .social-bar a {
+            display: block;
+            padding: 12px 15px;
+            color: white;
+            font-size: 22px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .social-bar a:hover {
+            padding-left: 25px;
+        }
+
+        .social-bar .facebook {
+            background: #1877f2;
+        }
+
+        .social-bar .whatsapp {
+            background: #25d366;
+        }
     </style>
 </head>
 
@@ -385,87 +414,77 @@
                             <option value="400">400 String Hoppers - Rs 2,400</option>
                             <option value="450">450 String Hoppers - Rs 2,700</option>
                             <option value="500">500 String Hoppers - Rs 3,000</option>
-                            <option value="550">550 String Hoppers - Rs 3,300</option>
                         </select>
                     </div>
-                    <div class="mb-4"><textarea id="msg" class="form-control" rows="4" placeholder="Event date / Location / Extras needed (Chicken Gravy, Pol Sambol, etc.) / White or Red String Hoppers / Notes"></textarea></div>
-
-                    <p class="text-danger text-center fw-bold fs-5">⚠️ 50% advance payment required</p>
-
+                    <div class="mb-4">
+                        <textarea id="notes" class="form-control" placeholder="Notes / සටහන්"></textarea>
+                    </div>
                     <button type="submit" class="btn btn-success w-100">Send Order via WhatsApp</button>
                 </form>
             </div>
         </div>
     </section>
 
-<a href="https://www.facebook.com/profile.php?id=61585353677759"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="me-4 fs-4 text-decoration-none">
-    📘 Facebook
-</a>
-</section>
-        <a href="https://instagram.com/yourpage" class="ms-4 fs-4 text-decoration-none">📸 Instagram</a>
-        <br><br>
-        <img class="rounded shadow" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://wa.me/94764526990" alt="WhatsApp QR Code">
-        <p class="mt-3 fs-5 fw-bold" id="scanText">Scan to order on WhatsApp</p>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <p class="mb-0">© 2025 Stringhopper Hut – Kesbewa | අද රස කේටරින්</p>
+        <p class="mb-3">© 2025 Stringhopper Hut – Kesbewa | අද රස කේටරින්</p>
+        <div class="fs-3">
+            <a href="https://www.facebook.com/profile.php?id=61585353677759" target="_blank" class="text-white me-3">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://instagram.com/yourpage" target="_blank" class="text-white me-3">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/94764526990" target="_blank" class="text-white">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
     </footer>
 
-    <a class="whatsapp" href="https://wa.me/94764526990">💬 Order</a>
+    <!-- Sticky Social Bar -->
+    <div class="social-bar">
+        <a href="https://www.facebook.com/profile.php?id=61585353677759" target="_blank" class="facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://wa.me/94764526990" target="_blank" class="whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
-    <!-- Scripts -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- WhatsApp Order Script -->
     <script>
-        // WhatsApp order
         function sendWA() {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const pkg = document.getElementById('pkg').value;
-            const pkgText = document.getElementById('pkg').options[document.getElementById('pkg').selectedIndex].text;
-            const msg = document.getElementById('msg').value;
-            const text = `Name: ${name}%0APhone: ${phone}%0APackage: ${pkgText}%0ADetails: ${msg}%0AAdvance: 50% required`;
-            window.open("https://wa.me/94764526990?text=" + text, "_blank");
+            let name = encodeURIComponent(document.getElementById('name').value);
+            let phone = encodeURIComponent(document.getElementById('phone').value);
+            let pkg = encodeURIComponent(document.getElementById('pkg').value);
+            let notes = encodeURIComponent(document.getElementById('notes').value);
+
+            let msg = `*Stringhopper Hut Order*%0AName: ${name}%0APhone: ${phone}%0APackage: ${pkg}%0ANotes: ${notes}`;
+            window.open(`https://wa.me/94764526990?text=${msg}`, '_blank');
         }
 
-        // Language toggle
-        function setLang(l) {
-            if (l === "si") {
-                document.getElementById("title").innerHTML = "🍽️ ඉඳිආප්ප හට්";
-                document.getElementById("subtitle").innerHTML = "Home-Based Catering | Kesbewa";
-                document.getElementById("extraInfo").innerHTML = "🔴⚪ සුදු සහ රතු ඉඳිආප්ප තිබේ<br>✅ තැන්පතු ගෙවීමෙන් පසුව ඇනවුම් තහවුරු වේ";
-                document.getElementById("delivery").innerHTML = "🚚 ඉඳිආප්ප 200ට වැඩි ඇනවුම් සඳහා නොමිලේ බෙදාහැරීම<br>📍 කැස්බෑව – 5km සීමාව තුළ";
-                document.getElementById("advance").innerHTML = "⚠️ සියලු කේටරින් ඇනවුම් තහවුරු කිරීම සඳහා 50% ක අත්තිකාරම් මුදල් අනිවාර්ය වේ.";
-                document.getElementById("packagesTitle").innerHTML = "ඉඳිආප්ප පැකේජ්";
-                document.getElementById("extrasTitle").innerHTML = "🍛 අතිරේක කරි";
-                document.getElementById("extrasInfo").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක: 500ml, 650ml, 750ml, 1L<br>📞 ඔබගේ අවශ්‍ය ප්‍රමාණය සඳහා මිල ගණන් දැන ගැනීමට අප හා සම්බන්ධ වන්න";
-                document.getElementById("chickenGravy").innerHTML = "🍗 කුකුල් මස් කරිය";
-                document.getElementById("polSambol").innerHTML = "🥥 පොල් සම්බෝලය";
-                document.getElementById("potatoCurry").innerHTML = "🥔 අල කරිය";
-                document.getElementById("dhalCurry").innerHTML = "🍛 පරිප්පු කරිය";
-                document.getElementById("multipleSizes1").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
-                document.getElementById("multipleSizes2").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
-                document.getElementById("multipleSizes3").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
-                document.getElementById("multipleSizes4").innerHTML = "විවිධ ප්‍රමාණවලින් ලබා ගත හැක";
-                document.getElementById("orderNowLink").innerHTML = "📲 WhatsApp දැන්ම ඇණවුම් කරන්න";
-                document.getElementById("orderFormTitle").innerHTML = "ඔන්ලයින් ඇණවුම්";
-                document.getElementById("scanText").innerHTML = "WhatsApp මඟින් ඇණවුම් කිරීමට ස්කෑන් කරන්න";
+        function setLang(lang) {
+            if (lang === 'si') {
+                document.getElementById('title').textContent = '🍽️ Stringhopper Hut';
+                document.getElementById('subtitle').textContent = 'අද රස කේටරින්';
+                document.getElementById('extraInfo').innerHTML = '🔴⚪ White and Red String Hoppers Available<br>✅ Orders confirmed after deposit payment';
+                document.getElementById('packagesTitle').textContent = '🍽️ String Hopper Catering Packages';
+                document.getElementById('extrasTitle').textContent = '🍛 Extras & Curries';
+                document.getElementById('orderFormTitle').textContent = 'Online Order';
             } else {
-                location.reload();
+                document.getElementById('title').textContent = '🍽️ Stringhopper Hut';
+                document.getElementById('subtitle').textContent = 'Fresh Catering Today';
+                document.getElementById('extraInfo').innerHTML = '🔴⚪ White and Red String Hoppers Available<br>✅ Orders confirmed after deposit payment';
+                document.getElementById('packagesTitle').textContent = '🍽️ String Hopper Catering Packages';
+                document.getElementById('extrasTitle').textContent = '🍛 Extras & Curries';
+                document.getElementById('orderFormTitle').textContent = 'Online Order';
             }
         }
     </script>
 
 </body>
 
-
 </html>
-
-
-
-
-
